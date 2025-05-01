@@ -1,0 +1,30 @@
+there is a module named http-status-code, it does all the enum mapping of ports,
+
+`npm install http-status-codes`
+
+
+every folder should have an index.js file, 
+
+Every different version of api, should be done in different folder in routes
+like routes/v1 and routes/v2, 
+
+Routing - a way to handle routes, using express methods like POST, GET, PUT, DELETE, 
+
+express.Router() -> it is done so to create modular instance, 
+app.use() -> it is a middleware, which applies for all the routes
+
+- a good logging info, for that a package is required called winston,
+
+ORM VS ODM
+- ODM - no SQL DB
+
+- ORM - SQL DB, object relational mapping, then we write somehting like CREATE TABLE table_name({}),
+what it does u write a oop related code and internally it gets converted and interacts with db easily, 
+We will be using sequelize , we can do data modelling in it, u can read the overall docs, 
+`npm install sequelize`
+So sequelize is an ORM for any relational DB, so how will sequelize know which DB to connect with, so for that we need drivers,
+so we will be connecting to mysql driver,  to make a connection from the ORM layer to the DB layer,
+`npm install mysql2`
+
+
+
