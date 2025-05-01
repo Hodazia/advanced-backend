@@ -26,5 +26,30 @@ So sequelize is an ORM for any relational DB, so how will sequelize know which D
 so we will be connecting to mysql driver,  to make a connection from the ORM layer to the DB layer,
 `npm install mysql2`
 
+there is something called as sequelize CLI, it gives u some commands which are the same for any DB drivers u use,
+`npm install sequelize-cli`
+then run `npx sequelize init` ->
+
+
+production environment - where actual users are going to connect with the DB 
+"dialect" -> "mysql"
+"host" -> the url of the server where u have deployed mysql server , 
+install mySQL workbench, since it is a development environment, the db should be local,
+"database" -> "database_name" it should also have a username and password, 
+
+"development": {
+    "username": "root",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+// u can add the password, the username, database, host, 
+this contains sensitive info, so it should not be added to git, store it in gitignore, 
+
+
+
+
+
 
 

@@ -17,5 +17,5 @@ const {ServerConfig, Logger } = require("./config")
 app.use('/api', apiRoutes)
 app.listen(ServerConfig.PORT, () => {
     console.log(`listened to the port ${ServerConfig.PORT}`);
-    Logger.info("Successfully started the server")
+    //Logger.info("Successfully started the server")
 })
