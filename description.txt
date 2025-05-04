@@ -32,22 +32,72 @@ then run `npx sequelize init` ->
 
 
 production environment - where actual users are going to connect with the DB 
-"dialect" -> "mysql"
+"dialect" -> "mysql", which DB to connect with, 
 "host" -> the url of the server where u have deployed mysql server , 
 install mySQL workbench, since it is a development environment, the db should be local,
 "database" -> "database_name" it should also have a username and password, 
 
-"development": {
+{
+  "development": {
     "username": "root",
     "password": null,
     "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+
+there will be QA engineers who will rectify the bugs and use a test environment,
 // u can add the password, the username, database, host, 
 this contains sensitive info, so it should not be added to git, store it in gitignore, 
 
+migrations folder -> it is used in many frameworks, but what is the use of it, it is done for version control of DB. 
+when u start creating a db, then while continuing with the project, u create new tables, new views, u modify the DB. but u store the previous DB,
+so u do version control, 
 
+now, create a CRUD api, 
+
+-----------------------------------------------------------
+then, go inside the config.json file, where username is "root" and password write the password, and give it a DB name like 'Flights',
+now u can run commands in mysql -> mysql -u root -p 
+Enter the password:
+then connect to mysql, then u can write the mysql commands, but make sure mysql is installed in the system, 
+But how to create a DB in mysql, there are sequelize commands, but go inside the /src/ folder 
+`npx sequelize db:create` // it will create a DB in mysql with the DB name from src/config/config.json
+
+EVERY TABLE IS CONSIDERED AS A MODEL, 
+`npx sequelize model:generate --name Airplane --attributes modelNumber:string,capacity:integer ` 
+
+// it will generate a model and add migrations to it, `--name ` it tells the sequelize what should be the 
+table/model name is , `--attributes` it will define the columns, then without any space, u give its datatype 
+
+OUTPUT will be something like this,
+New model was created at C:\Users\ziaul\OneDrive\Desktop\backend_microservices\src\models\airplane.js .
+New migration was created at C:\Users\ziaul\OneDrive\Desktop\backend_microservices\src\migrations\20250504145553-create-airplane.js .
+
+it won't create a table file, but just create models in models folder, that's where migrations are used,
+migrations is like git add, but not git commit, so what migrations file contain is what are the commits/changes that will happen once they are committed,
+HOW TO COMMIT THE DB, use command - `npx sequelize db:migrate`, whatever be the pending migrations , commit all of those,
+`OUTPUT` -> it will return two tables like 'Airplane' AND 'sequelizemeta'
+
+Now if u want to revert back to the old migration, there is a command
+`npx sequelize db:migrate:undo` , the airplane table will be gone
+
+DB sync in sequelize, 
 
 
 
